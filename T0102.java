@@ -8,7 +8,7 @@ public class T0102 {
 //			if(Character.isLowerCase(x)) answer+=Character.toUpperCase(x);
 //			else answer+=Character.toLowerCase(x);
 			
-			//¾Æ½ºÅ°³Ñ¹ö »ç¿ë
+			//ì•„ìŠ¤í‚¤ì½”ë“œ ì‚¬ìš©
 			if(x>=65 && x<=90) answer+=(char)(x+32);
 			else answer+=(char)(x-32);
 		}
