@@ -5,20 +5,13 @@ import java.util.StringTokenizer;
 
 public class continuousSubsequence03_04 {
     public static int Solution(int n, int k, int[] nums) {
-        int answer = 0;
-        int temp=0;
-
-        for(int i=0; i<n; i++){
-            temp=0;
-            for(int j=0; i+j<n; j++){
-                temp += nums[i+j];
-                if(temp==k) {
-                    answer++;
-                    break;
-                }
-                if(temp>k){
-                    break;
-                }
+        int answer=0, sum=0, lt=0;
+        for(int rt=0; rt<n; rt++){
+            sum+=arr[rt];
+            if(sum==m) answer++;
+            while(sum>=m){
+                sum-=arr[lt++];
+                if(sum==m) answer++;
             }
         }
         return answer;
@@ -39,3 +32,4 @@ public class continuousSubsequence03_04 {
         System.out.println(Solution(n, k, nums));
     }
 }
+
