@@ -11,8 +11,8 @@ public class T0101 {
 //			if(str.charAt(i)==t) answer++;
 //		}
 		
-		//Çâ»óµÈ for¹® »ç¿ë
-		for(char x : str.toCharArray()) {      //string¿¡ ÀÖ´Â ¹®ÀÚ¹è¿­ °´Ã¼¸¸µå´Â ÇÔ¼ö
+		//í–¥ìƒëœ forë¬¸ ì‚¬ìš©
+		for(char x : str.toCharArray()) {      //stringì— ìˆëŠ” ë¬¸ìë°°ì—´ ê°ì²´ë§Œë“œëŠ” í•¨ìˆ˜
 			if(x==t) answer++;
 		}
 		
