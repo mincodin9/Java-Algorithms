@@ -13,11 +13,9 @@ public class hashMap04_02 {
         for(char c : s1.toCharArray()){
             map1.put(c, map1.getOrDefault(c, 0)+1);
         }
-        for(char c : s2.toCharArray()){
-            map2.put(c, map2.getOrDefault(c, 0)+1);
-        }
-        for(char c : map1.keySet()){
-            if(map1.get(c)!=(map2.get(c))) return "NO";
+        for(char c: s2.toCharArray()){
+            if(!map1.containsKey(c)||map1.get(c)==0) return "NO";
+            map1.put(c, map1.get(c)-1);
         }
 
         return answer;
@@ -31,3 +29,4 @@ public class hashMap04_02 {
         System.out.println(Solution(s1, s2));
     }
 }
+
