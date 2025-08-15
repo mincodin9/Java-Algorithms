@@ -8,26 +8,13 @@ import java.util.StringTokenizer;
 public class queue05_06 {
     public static int Solution(int n, int k){
         int answer=0;
-        Queue<Integer> q1 = new LinkedList<>();
-        Queue<Integer> q2 = new LinkedList<>();
-
-        for(int i=1; i<n+1; i++){
-            q1.add(i);
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=1; i<=n; i++) q.offer(i);
+        while(!q.isEmpty()) {
+            for(int i=1; i<k; i++)q.offer(q.poll());
+            q.poll();
+            if(q.size()==1) answer=q.poll();
         }
-
-        int target=0;
-        while(q1.size()!=1){
-            for(int i=0; i<q1.size(); i++){
-                target++;
-                if(target==k){
-                    target=0;
-                    q1.poll();
-                }
-                else q2.add(q1.poll());
-            }
-            for(int j=0; j<q2.size(); j++) q1.add(q2.poll());
-        }
-        answer=q1.peek();
         return answer;
     }
 
@@ -39,3 +26,4 @@ public class queue05_06 {
         System.out.println(Solution(n, k));
     }
 }
+
