@@ -1,23 +1,26 @@
 package sortingSearching;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class cacheLRU06_04 {
-    public static ArrayList<Integer> Solution(int s, int n, int[] arr){
-        ArrayList<Integer> answer = new ArrayList<>();
+    public static int[] Solution(int s, int n, int[] arr){
+        int[] answer = new int[s];
 
-        for(int i=0; i<n; i++){
-            if(answer.contains(arr[i])) answer.remove(Integer.valueOf(arr[i]));
-            if(answer.size()<s) answer.add(arr[i]);
-            else{
-                answer.remove(0);
-                answer.add(arr[i]);
+        for(int x : arr){
+            int pos = -1;
+            for(int i=0; i<s; i++) if(answer[i]==x) pos=i;
+            if(pos==-1){ //answer 배열에 값이 없을 때
+                for(int i=s-1; i>0; i--){
+                    answer[i]=answer[i-1];
+                }
+            } else{ //answer 배열에 값이 있을 때
+                for(int i=pos; i>0; i--){
+                    answer[i]=answer[i-1];
+                }
             }
+            answer[0]=x;
         }
-        Collections.reverse(answer);
         return answer;
     }
 
