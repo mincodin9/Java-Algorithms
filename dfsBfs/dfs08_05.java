@@ -5,19 +5,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class dfs08_05 {
-    static int n, m, answer=Integer.MAX_VALUE, sum=0;
+    static int n, m, answer=Integer.MAX_VALUE;
     static int[] arr;
 
-    public static void DFS(int L){
+    public static void DFS(int L, int sum){
         if(sum>m) return;
         if(L>=answer) return;
-        if(sum==m){
-            answer=Math.min(answer, L);
-        }else{
+        if(sum==m) answer=Math.min(answer, L);
+        else{
             for(int i=0; i<n; i++){
-                sum+=arr[i];
-                DFS(L+1);
-                sum-=arr[i];
+                DFS(L+1, sum+arr[i]);
             }
         }
     }
@@ -36,7 +33,7 @@ public class dfs08_05 {
             int tmp=arr[i]; arr[i]=arr[n-1-i]; arr[n-1-i]=tmp;
         }
 
-        T.DFS(0);
+        T.DFS(0, 0);
         System.out.println(answer);
     }
 }
