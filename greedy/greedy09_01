@@ -1,0 +1,42 @@
+package greedy;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Player{
+    public int h, w;
+    Player(int h, int w){
+        this.h=h;
+        this.w=w;
+    }
+}
+
+public class greedy09_01 {
+    static int answer=0;
+    static ArrayList<Player> list = new ArrayList<>();
+
+    public void check(Player p){
+        for(Player c: list){
+            if(c.h>p.h && c.w>p.w) return;
+        }
+        answer++;
+    }
+
+    public static void main(String[] args) throws IOException {
+        greedy09_01 T = new greedy09_01();
+        Scanner sc = new Scanner(System.in);
+
+        int n=sc.nextInt();
+        for(int i=0; i<n; i++){
+            int h=sc.nextInt();
+            int w=sc.nextInt();
+            list.add(new Player(h, w));
+        }
+
+        for(Player p: list){
+            T.check(p);
+        }
+        System.out.println(answer);
+    }
+}
